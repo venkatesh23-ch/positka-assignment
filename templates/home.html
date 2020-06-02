@@ -1,0 +1,90 @@
+<style type="text/css">
+table, input[type=reset], input[type=submit] {
+  font-family : Helvetica;
+  font-size : 100%;
+  font-weight: bold;
+}
+ h3 {
+   color: #ea503f;
+   font-family: Arial;
+ }
+</style>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Search Application</title>
+  </head>
+  <body>
+    <center>
+      {{msg}}
+      <h3>Enter Search Details</h3>
+      {% block content %}
+      <form method="post" action="/search">
+        <table>
+          <tr>
+            <td>
+              Server IP:
+            </td>
+            <td>
+              <input required="" name="server_ip" id="server_ip"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Username:
+            </td>
+            <td>
+              <input required name="username" id="username"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Password:
+            </td>
+            <td>
+              <input required type="password" name="password" id="password"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Search Query:
+            </td>
+            <td>
+              <input required name="searchQry" id="searchQry"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Time Range:
+            </td>
+            <td>
+              <select required name="timeRange" id="timeRange">
+                <option value="24">Last 24 Hrs</option>
+                <option value="16">Last 16 Hrs</option>  
+                <option value="8">Last 8 Hrs</option>
+                <option value="4">Last 4 Hrs</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Email:
+            </td>
+            <td>
+              <input required name="email" type="email" id="email"/>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </table><br>
+        <input type="submit" name="search" id="search"/>
+        <input type="reset" name="reset" id="reset"/>
+      </form>
+      {% endblock %}
+    </center>
+  </body>
+</html>
