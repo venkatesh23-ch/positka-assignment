@@ -23,7 +23,7 @@ def search():
             # Call Splunk Search API and get the results 
             resp_json = fetch_results(server_ip, username, password,
                                         searchQry, timeRange)
-            print(resp_json)
+            # print(resp_json)
             sendmail("Splunk Search Results", "PFA JSON Results", email, resp_json)
             msg = "Search Results sent as JSON to the reciever email address."
             return render_template("home.html", msg=msg)

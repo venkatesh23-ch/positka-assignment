@@ -37,6 +37,5 @@ def sendmail(subject, body, reciever_mail, json_data):
         print("Success!")
 
 # if __name__ == '__main__':
-#     with open("test.json") as file:
-#         json_data = file.read()
-#         sendmail("Search Results", 'venkatesh23.ch@gmail.com', json_data)
+    # json_data = '{"ID": 2, "name": "venkatesh23"}'
+    # sendmail('Search Results', 'PFA Results', 'venkatesh23.ch@gmail.com', json_data)
