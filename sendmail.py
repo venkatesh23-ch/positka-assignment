@@ -16,25 +16,28 @@ def sendmail(subject, body, reciever_mail, json_data):
         sender_mail = cp.get("SMTP", "sender_mail")
         hostname = cp.get("SMTP", "hostname")
         password = cp.get("SMTP", "password")
-        with smtplib.SMTP(hostname) as server:
-            server.starttls()
-            server.login(sender_mail, password)
-            msg = MIMEMultipart('alternative')
-            msg['From'] = sender_mail
-            msg['To'] = reciever_mail
-            msg['Subject'] = subject
-            body = MIMEText(body, "plain")
-            attachment = MIMEText(json_data, 'plain')
-            attachment.add_header('Content-Disposition', 'attachment', filename='searchResults.json')
-            msg.attach(body)
-            msg.attach(attachment)
-            server.send_message(msg)
-            # server.sendmail(
-            #     from_address,
-            #     reciever_mail,
-            #     msg.as_string(),
-            # )
-        print("Success!")
+        try:
+            with smtplib.SMTP(hostname) as server:
+                server.starttls()
+                server.login(sender_mail, password)
+                msg = MIMEMultipart('alternative')
+                msg['From'] = sender_mail
+                msg['To'] = reciever_mail
+                msg['Subject'] = subject
+                body = MIMEText(body, "plain")
+                attachment = MIMEText(json_data, 'plain')
+                attachment.add_header('Content-Disposition', 'attachment', filename='searchResults.json')
+                msg.attach(body)
+                msg.attach(attachment)
+                server.send_message(msg)
+                # server.sendmail(
+                #     from_address,
+                #     reciever_mail,
+                #     msg.as_string(),
+                # )
+            return "Success" 
+        except Exception as e:
+            return "Exception in sending mail: " + str(e)
 
 # if __name__ == '__main__':
     # json_data = '{"ID": 2, "name": "venkatesh23"}'
