@@ -9,5 +9,5 @@ Jinja2==2.11.2
 MarkupSafe==1.1.1
 pycrypto==2.6.1
 splunk-sdk==1.6.13
-urllib3==1.25.9
+urllib3==1.26.5
 Werkzeug==1.0.1
